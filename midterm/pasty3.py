@@ -75,7 +75,7 @@ def processing(
     """
     Calculates some figures from the data the user provided.
 
-    :param base_price: 2-point float, the base cost of the pasties
+    :param base_price:     2-point float, the base cost of the pasties
     :param tip_percentage: 1-point float, the percentage of the subtotal which
                            the user wants to tip
     :returns:
@@ -97,13 +97,13 @@ def outputs(pasties, base_price, tax, subtotal, tip, tip_percentage, total):
     """
     Prints the invoice for the pasty purchase.
 
-    :param pasties: dict, key is pasty flavor & value is pasty price
-    :param base_price: 2-point float, base price of the pasties
-    :param tax: 2-point float, the tax to be added to subtotal
-    :param subtotal: 2-point float, base_price + tax
-    :param tip: 2-point float, tip to be added to subtotal
-    :param tip_percentage: 1-point float, percentage of subtotal to tip
-    :param total: 2-point float, grand total
+    :param pasties        :  dict, key is pasty flavor & value is pasty price
+    :param base_price     :  2-point float, base price of the pasties
+    :param tax            :  2-point float, the tax to be added to subtotal
+    :param subtotal       :  2-point float, base_price + tax
+    :param tip            :  2-point float, tip to be added to subtotal
+    :param tip_percentage :  1-point float, percentage of subtotal to tip
+    :param total          :  2-point float, grand total
     """
     # generate the line of the invoice that lists the tip percentage
     tip_string = "Tip @ {:.1f}%".format(tip_percentage)
@@ -127,12 +127,12 @@ def get_pos_float(
     Accepts a float from the user and validates it, asking again if the input
     is invalid according to the specified conditions.
 
-    :param prompt: str, the prompt the user will see.
+    :param prompt:      str, the prompt the user will see.
     :param invalid_msg: str, the message the user will see if their input isn't
                         a valid float.
-    :param precision: int, the number of decimal places the input will be
-                      rounded to, default is 2.
-    :returns: a positive float
+    :param precision:   int, the number of decimal places the input will be
+                        rounded to, default is 2.
+    :returns:           a positive float
     """
     while True:
         try:
@@ -152,8 +152,8 @@ def get_pos_int(prompt="? ") -> int:
     """
     Receives input from the user. If it's a valid integer, return it.
 
-    :param prompt: str, prompt for the user.
-    :return: int, a positive integer
+    :param prompt :  str, prompt for the user.
+    :returns      :  int, a positive integer
     """
     while True:
         try:

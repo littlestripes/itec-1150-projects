@@ -13,8 +13,14 @@ import sys  # exit
 def main():
     print("Welcome to the feedback generator, didact.")
     while True:
-        feedback_str = inputs()
-        feedback_list = processing()
+        try:
+            feedback_str = inputs()
+        # didn't have time to raise a specific error for each thing that could
+        # go wrong, sorry :^/
+        except ValueError:
+            print("Invalid input. Please try again.")
+            continue
+        feedback_list = processing(feedback_str)
         outputs(feedback_list)
         # confirmation loop
         print("Care to go again?")
@@ -34,15 +40,41 @@ def inputs() -> str:
     Ask the user to enter feedback phrases separated by an
     exclamation mark (!).
 
-    :returns: str, a corrected string of feedback phrases
+    :returns          : str, a corrected string of feedback phrases
+    :raises ValueError: when the string doesn't satisfy the conditions
+                        i.e. doesn't contain "!", no spaces, etc.
     """
+    print("Please enter feedback phrases separated with an exclamation mark (!).")
+    feedback_str = str(input("$ "))
+    # validate
+    if "!" not in feedback_str:
+        raise ValueError
+    # now to validate/format the input
+    feedback_words = feedback_str.split()
+    # get rid of extraneous spaces
+    feedback_words = [feedback.strip() for feedback in feedback_words]
+    # and return corrected string
+    return " ".join(feedback_words)
 
 
-def processing():
-    pass
+def processing(feedback_str: str) -> list:
+    """
+    Split feedback_str into a list of feedback phrases and format them.
+
+    :param feedback_str: str, string to be formatted into a list
+    :returns           : list, list of formatted feedback phrases
+    """
+    feedback_list = feedback_str.split("!")
+    # strip and capitalize, again? shouldn't fixing "common errors"
+    # be done here?
+    feedback_list = [feedback.strip().capitalize()
+                     for feedback in feedback_list]
+    # add "!" back to each phrase and return
+    feedback_list = [f"{feedback}!" for feedback in feedback_list]
+    return feedback_list
 
 
-def outputs():
+def outputs(feedback_list: list):
     pass
 
 

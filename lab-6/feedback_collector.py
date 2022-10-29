@@ -22,6 +22,7 @@ def main():
             continue
         feedback_list = processing(feedback_str)
         outputs(feedback_list)
+        print("Thanks for your sumptuous contribution.")
         # confirmation loop
         print("Care to go again?")
         while True:
@@ -49,7 +50,7 @@ def inputs() -> str:
     # validate
     if "!" not in feedback_str:
         raise ValueError
-    # now to validate/format the input
+    # now to format the input
     feedback_words = feedback_str.split()
     # get rid of extraneous spaces
     feedback_words = [feedback.strip() for feedback in feedback_words]
@@ -65,8 +66,10 @@ def processing(feedback_str: str) -> list:
     :returns           : list, list of formatted feedback phrases
     """
     feedback_list = feedback_str.split("!")
+    # there's always a space at the end of the list, pop that sucker
+    feedback_list.pop(-1)
     # strip and capitalize, again? shouldn't fixing "common errors"
-    # be done here?
+    # be done here in processing()?
     feedback_list = [feedback.strip().capitalize()
                      for feedback in feedback_list]
     # add "!" back to each phrase and return
@@ -75,7 +78,14 @@ def processing(feedback_str: str) -> list:
 
 
 def outputs(feedback_list: list):
-    pass
+    """
+    Display the feedback phrases to the user.
+
+    :param feedback_list: list, formatted feedback phrases
+    """
+    print("Here are your phrases:")
+    for idx, feedback in enumerate(feedback_list):
+        print(f"{idx + 1}: {feedback}")
 
 
 main()

@@ -13,11 +13,11 @@ import re  # compile(), search()
 def main():
     # regex to use
     name_regex = re.compile(r'''
-    ^[a-zA-Z]+'?[a-zA-Z]+    # first name (may include ')
-    (([\s|-])                # separator (could be space or hyphen)
+    ^([a-zA-Z]+'?[a-zA-Z]+)  # first name (may include ')
+    ([\s|-]                  # separator (could be space or hyphen)
     ([a-zA-Z]+'?[a-zA-Z]+))? # middle name (optional)
     [\s|-]                   # separator
-    [a-zA-Z]+'?[a-zA-Z]+$    # last name
+    ([a-zA-Z]+'?[a-zA-Z]+)$  # last name
     ''', re.VERBOSE)
 
     # ask user for string to search
@@ -26,7 +26,7 @@ def main():
     name_search_object = name_regex.search(name_source)
 
     if name_search_object is not None:  # if we got a match
-        print(f"{name_search_object.groups()} is a name! whoopee!")
+        print(f"{name_source} is a name! whoopee!")
     else:  # if we didn't got a match
         print("That ain't no name I ever heard. And I've heard lots!")
 

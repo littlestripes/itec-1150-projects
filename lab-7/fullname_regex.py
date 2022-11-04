@@ -13,11 +13,11 @@ import re  # compile(), search()
 def main():
     # regex to use
     name_regex = re.compile(r'''
-    ^([a-zA-Z]+'?[a-zA-Z]+)  # first name (may include ')
-    ([\s|-]                  # separator (could be space or hyphen)
-    ([a-zA-Z]+'?[a-zA-Z]+))? # middle name (optional)
-    [\s|-]                   # separator
-    ([a-zA-Z]+'?[a-zA-Z]+)$  # last name
+    ^([a-zA-Z]+'?[a-zA-Z]+)   # first name (may include ')
+    ([\s|-]                   # separator (could be space or hyphen)
+    ([a-zA-Z]+'?[a-zA-Z]+))?  # middle name (optional)
+    [\s|-]                    # separator
+    ([a-zA-Z]+'?[a-zA-Z]+)$   # last name
     ''', re.VERBOSE)
 
     # ask user for string to search

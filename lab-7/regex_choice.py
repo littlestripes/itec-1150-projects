@@ -15,7 +15,7 @@ def main():
     # signed float regex
     float_regex = re.compile(r'''
     ^-?     # signed? maybe!
-    (\d+)   # as many digits as you like
+    (\d+)?  # as many digits as you like
     (\.     # decimal point (optional)
     \d+)?$  # mantissa (optional)
     ''', re.VERBOSE)

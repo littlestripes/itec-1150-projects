@@ -19,11 +19,11 @@ def main():
 
     # restart loop
     while True:
-        # restart prompt, accepts str and cannot be empty
-        restart = pyip.inputStr(prompt="Need more books? (y or n): ")
-        if restart == "y":
+        # restart prompt, accepts yes or no
+        restart = pyip.inputYesNo(prompt="Need more books? (y or n): ")
+        if restart == "yes":
             main()
-        elif restart == "n":
+        elif restart == "no":
             print("Thanks for your time.")
             sys.exit()
         else:

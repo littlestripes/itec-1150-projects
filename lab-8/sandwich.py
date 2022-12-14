@@ -86,15 +86,15 @@ def inputs() -> list:
     # populate the empty list with sandwiches
     for sandwich in range(num_sandwiches):
         # ask for bread type using INGREDIENTS["breads"] as choices
-        bread = pyip.inputMenu(BREADS, prompt="\nPick a bread!\n")
+        bread = pyip.inputMenu(BREADS, prompt="\nPick a bread!\n", numbered=True)
         sandwiches[sandwich].append(str(bread))
         # same deal for protein
-        protein = pyip.inputMenu(PROTEINS, prompt="\nPick a protein!\n")
+        protein = pyip.inputMenu(PROTEINS, prompt="\nPick a protein!\n", numbered=True)
         sandwiches[sandwich].append(str(protein))
         # and a confirmation for cheese before we put any on
         wants_cheese = pyip.inputYesNo(prompt="\nWant cheese?\n")
         if wants_cheese == "yes":
-            cheese = pyip.inputMenu(CHEESES, prompt="\nPick a cheese!\n")
+            cheese = pyip.inputMenu(CHEESES, prompt="\nPick a cheese!\n", numbered=True)
             sandwiches[sandwich].append(str(cheese))
         # then a series of yes/no for other condiments
         wants_mayo = pyip.inputYesNo(prompt="\nWant mayo?\n")
